@@ -561,3 +561,19 @@ Binary Search Tree Iterator
         else:
             self.q.clear()
             return False
+	    
+Sum Tree	    
+ def isSumTree(self,root):
+        # Code here
+        def func(root):
+            if root == None:
+                return 0
+            return root.data+func(root.left)+func(root.right)
+        if root == None or (root.left == None and root.right == None):
+            return True
+        ls = func(root.left)
+        rs = func(root.right)
+        
+        if ls+rs == root.data and self.isSumTree(root.left) and self.isSumTree(root.right):
+            return True
+        return False
