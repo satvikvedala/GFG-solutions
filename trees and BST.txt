@@ -577,3 +577,27 @@ Sum Tree
         if ls+rs == root.data and self.isSumTree(root.left) and self.isSumTree(root.right):
             return True
         return False
+	
+Increasing Order Search Tree
+	class Solution:
+    def func(self,root,arr):
+        if root!=None:
+            self.func(root.left,arr)
+            arr.append(root.val)
+            self.func(root.right,arr)
+        return arr
+    def increasingBST(self, root: TreeNode) -> TreeNode:
+        arr = []
+        arr = self.func(root,arr)
+        print(arr)
+        temp = None
+        curr = None
+        for item in arr:
+            if temp == None:
+                temp = TreeNode(item)
+                curr = temp
+            else:
+                okay = TreeNode(item)
+                curr.right = okay
+                curr = curr.right
+        return temp
