@@ -601,3 +601,36 @@ Increasing Order Search Tree
                 curr.right = okay
                 curr = curr.right
         return temp
+
+Boundary Traversal of binary tree
+def printBoundaryView(root):
+    # Code here
+    res = []
+    res.append(root.data)
+    def func1(root,left):
+        if root:
+            if root.left:
+                left.append(root.data)
+                func1(root.left,left)
+            elif root.right:
+                left.append(root.data)
+                func1(root.right,left)
+    func1(root.left,res)
+    def func2(root,leaves):
+        if root:
+            func2(root.left,leaves)
+            if root.left == None and root.right == None:
+                leaves.append(root.data)
+            func2(root.right,leaves)
+    func2(root.left,res)
+    func2(root.right,res)
+    def func3(root,right):
+        if root:
+            if root.right:
+                func3(root.right,right)
+                right.append(root.data)
+            elif root.left:
+                func3(root.left,right)
+                right.append(root.data)
+    func3(root.right,res)
+    return res
