@@ -634,3 +634,28 @@ def printBoundaryView(root):
                 right.append(root.data)
     func3(root.right,res)
     return res
+
+Bottom View of Binary Tree
+def bottomView(root):
+    '''
+    :param root: root of the binary tree
+    :return: list containing the bottom view from left to right
+    '''
+    # code here
+    from collections import defaultdict
+    dic = defaultdict(list)
+    def func(root,dic,x,y):
+        if root:
+            if y not in dic:
+                dic[y] = (root.data,x)
+            else:
+                if x>=dic.get(y)[1]:
+                    dic[y] = (root.data,x)
+            func(root.left,dic,x+1,y-1)
+            func(root.right,dic,x+1,y+1)
+    func(root,dic,0,0)
+    dic = sorted(dic.items())
+    res = []
+    for item in dic:
+        res.append(item[1][0])
+    return res
