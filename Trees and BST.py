@@ -659,3 +659,23 @@ def bottomView(root):
     for item in dic:
         res.append(item[1][0])
     return res
+
+Maximum Path Sum between 2 Leaf Nodes
+def maxPathSum(root):
+    # code here 
+    res = [float("-inf")]
+    def func(root,res):
+        if root == None:
+            return 0
+        l = func(root.left,res)
+        r = func(root.right,res)
+        
+        if root.left != None and root.right !=None:
+            res[0] = max(res[0],l+r+root.data)
+            return max(l,r)+root.data
+        elif root.left == None:
+            return r+root.data
+        else:
+            return l+root.data
+    su = func(root,res)
+    return res[0]
