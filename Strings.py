@@ -46,3 +46,13 @@
         except:
             return False
     return True
+  
+  
+  #REGEX method of validating an ip address
+  def isValid(s):
+    #code here
+    import re
+    if re.match("^(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$",s):
+        return True
+    return False
+            
