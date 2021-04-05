@@ -27,3 +27,22 @@
         # code here
         # return the product string
         return int(s1)*int(s2)
+      
+      
+#Validate an IP Address(not using REGEX)
+  def isValid(s):
+    #code here
+    sarray = s.split('.')
+    if len(sarray)<4 or len(sarray)>4:
+        return False
+    for item in sarray:
+        if item == '':
+            return False
+        try:
+            if int(item)>=0 and item[0] == '0' and len(item) != 1:
+                return False
+            if int(item)>255 or int(item)<0:
+                return False
+        except:
+            return False
+    return True
