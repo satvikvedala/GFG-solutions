@@ -21,3 +21,9 @@
             return int(string)
         except:
             return -1
+
+#Multiply two strings
+    def multiplyStrings(self,s1,s2):
+        # code here
+        # return the product string
+        return int(s1)*int(s2)
