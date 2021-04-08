@@ -660,7 +660,7 @@ def bottomView(root):
         res.append(item[1][0])
     return res
 
-Maximum Path Sum between 2 Leaf Nodes
+#Maximum Path Sum between 2 Leaf Nodes
 def maxPathSum(root):
     # code here 
     res = [float("-inf")]
@@ -679,3 +679,31 @@ def maxPathSum(root):
             return l+root.data
     su = func(root,res)
     return res[0]
+
+#Delete a node from BST
+def deleteNode(root, X):
+    # code here.
+    def func(root):
+        curr = root
+        while curr.left!=None:
+            curr = curr.left
+        return curr
+    if root is None:
+        return root
+    if X<root.data:
+        root.left = deleteNode(root.left,X)
+    if X>root.data:
+        root.right = deleteNode(root.right,X)
+    if X == root.data:
+        if root.left == None:
+            temp = root.right
+            root = None
+            return temp
+        elif root.right == None:
+            temp = root.left
+            root = None
+            return temp
+        temp = func(root.right)
+        root.data = temp.data
+        root.right = deleteNode(root.right,temp.data)
+    return root
