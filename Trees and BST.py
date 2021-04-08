@@ -707,3 +707,16 @@ def deleteNode(root, X):
         root.data = temp.data
         root.right = deleteNode(root.right,temp.data)
     return root
+#k-th smallest element in BST
+    def KthSmallestElement(self, root, K): 
+        #code here.
+        res = []
+        def func(root,res):
+            if root:
+                func(root.left,res)
+                res.append(root.data)
+                func(root.right,res)
+        func(root,res)
+        if K>len(res):
+            return -1
+        return res[K-1]
