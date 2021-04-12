@@ -62,3 +62,21 @@
 		    sell = i-1
 		    res.append((buy,sell))
 		return res
+#Minimum Swaps to Sort
+	def minSwaps(self, nums):
+		#Code here
+		arr = nums.copy()
+		nums = sorted(nums)
+		temp = [-1]*(max(nums)+1)
+		for i in range(len(arr)):
+		    temp[arr[i]] = i
+		count = 0
+		for i in range(len(arr)):
+		    if arr[i]!=nums[i]:
+		        x = temp[arr[i]]
+		        y = temp[nums[i]]
+		        arr[x],arr[y] = arr[y],arr[x]
+		        temp[arr[y]] = y
+		        temp[arr[x]] = x
+		        count+=1
+		return count
