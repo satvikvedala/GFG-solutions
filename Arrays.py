@@ -43,3 +43,22 @@
             self.mergeSort(arr,l,mid)
             self.mergeSort(arr,mid+1,r)
             self.merge(arr,l,mid,r)
+
+            
+#Stock Buy and Sell
+	def stockBuySell(self, A, n):
+		#code here
+		i = 0
+		res = []
+		while i<n-1:
+		    while i<n-1 and A[i+1]<=A[i]:
+		        i+=1
+		    if i==n-1:
+		        break
+		    buy = i
+		    i = i+1
+		    while i<n and A[i]>=A[i-1]:
+		        i+=1
+		    sell = i-1
+		    res.append((buy,sell))
+		return res
