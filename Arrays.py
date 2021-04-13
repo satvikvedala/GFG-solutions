@@ -128,3 +128,14 @@
                 count+=func(arr,n,l,mid,r)
             return count
         return merge(arr,n,0,n-1)
+
+#Search in a row-column sorted Matrix
+    def search(self,matrix, n, m, x): 
+    	# code here 
+    	i = 0
+    	while i<n:
+    	    if matrix[i][-1]>=x and matrix[i][0]<=x:
+    	        if x in matrix[i]:
+    	            return True
+    	    i+=1
+    	return False
