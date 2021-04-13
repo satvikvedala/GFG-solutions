@@ -82,7 +82,7 @@
 		return count
 
 	
-#Count Inversions
+#Count Inversions using MERGE SORT
     def inversionCount(self, arr, n):
         # Your Code Here
         def func(arr,n,l,mid,r):
