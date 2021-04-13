@@ -80,3 +80,51 @@
 		        temp[arr[x]] = x
 		        count+=1
 		return count
+
+	
+#Count Inversions
+    def inversionCount(self, arr, n):
+        # Your Code Here
+        def func(arr,n,l,mid,r):
+            m = mid-l+1
+            n = r-mid
+            count = 0
+            L = [0]*m
+            R = [0]*n
+            for i in range(m):
+                L[i] = arr[l+i]
+            for j in range(n):
+                R[j] = arr[mid+1+j]
+            
+            i = 0
+            j = 0
+            k = l
+            while i<m and j<n:
+                if L[i]<=R[j]:
+                    arr[k] = L[i]
+                    i+=1
+                else:
+                    arr[k] = R[j]
+                    print(mid,i,l)
+                    count += (mid-i+1-l)
+                    print(count)
+                    j+=1
+                k+=1
+            while i<m:
+                arr[k] = L[i]
+                k+=1
+                i+=1
+            while j<n:
+                arr[k] = R[j]
+                k+=1
+                j+=1
+            return count
+        def merge(arr,n,l,r):
+            count = 0
+            if l<r:
+                mid = (l+(r-1))//2
+                count+=merge(arr,n,l,mid)
+                count+=merge(arr,n,mid+1,r)
+                count+=func(arr,n,l,mid,r)
+            return count
+        return merge(arr,n,0,n-1)
