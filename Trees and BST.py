@@ -737,3 +737,37 @@ def deleteNode(root, X):
         else:
             return right
 
+
+#Min distance between two given nodes of a Binary Tree
+    def dist(root,x,d,dis):
+        if root == None:
+            return 
+        if root.data == x:
+            d.append(dis)
+            return
+        dist(root.left,x,d,dis+1)
+        dist(root.right,x,d,dis+1)
+        
+    def func1(root,a,b):
+        if root == None:
+            return
+        if root.data == a or root.data == b:
+            return root
+        left = func1(root.left,a,b)
+        right = func1(root.right,a,b)
+        
+        if left!=None and right!=None:
+            return root
+        if left:
+            return left
+        else:
+            return right
+    lca = func1(root,a,b)
+    d1 = []
+    d2 = []
+    if lca:
+        dist(lca,a,d1,0)
+        dist(lca,b,d2,0)
+        return d1[0]+d2[0]
+    else:
+        return -1
