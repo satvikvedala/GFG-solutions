@@ -139,3 +139,17 @@
     	            return True
     	    i+=1
     	return False
+
+#Max sum in the configuration
+    curr_sum = 0
+    su = 0
+    for i in range(n):
+        su = su+a[i]
+        curr_sum+=a[i]*i
+    res = curr_sum
+    for i in range(n):
+        next_val = curr_sum-(su-a[i])+(a[i]*(n-1))
+        curr_sum = next_val
+        res = max(res,curr_sum)
+        
+    return res
