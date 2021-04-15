@@ -720,3 +720,19 @@ def deleteNode(root, X):
         if K>len(res):
             return -1
         return res[K-1]
+
+#Lowest Common Ancestor in binary tree
+    def func1(root,a,b):
+        if root == None:
+            return
+        if root.data == a or root.data == b:
+            return root
+        left = func1(root.left,a,b)
+        right = func1(root.right,a,b)
+        
+        if left!=None and right!=None:
+            return root
+        if left:
+            return left
+        else:
+            return right
