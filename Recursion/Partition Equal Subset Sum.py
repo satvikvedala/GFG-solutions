@@ -1,4 +1,3 @@
-#Partition Equal Subset Sum
         def func(N,arr,index,curr_sum,rem_sum):
             if (curr_sum>rem_sum) or (index>=N):
                 return False
