@@ -31,3 +31,25 @@
         return count;
     }
 }
+
+
+//ShortApproach
+class Geeks{
+    
+    static int countSumSubsets(int arr[],int n)
+    {
+        
+        //Your code here
+        int even = 0;
+        int odd = 0;
+        int x = 0;
+        int y = 0;
+        for(int i = 0;i<n;i++){
+            if(arr[i]%2 ==0) even++;
+            else odd++;
+        }
+        if (even!=0) {x = (int)Math.pow(2,even)-1;}
+        if(odd!=0) {y = (int)Math.pow(2,odd-1)-1;}
+        return x+y+x*y;
+    }
+}
