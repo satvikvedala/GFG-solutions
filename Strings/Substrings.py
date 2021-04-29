@@ -10,4 +10,4 @@ class Solution:
 		arr = []
 		st = ''
 		func(s,arr,st,len(s),len(s)-1)
-		return arr[1:]
+		return sorted(arr[1:])
