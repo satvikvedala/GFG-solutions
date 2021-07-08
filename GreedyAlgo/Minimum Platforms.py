@@ -5,16 +5,16 @@ class Solution:
         # code here
         arr = sorted(arr)
         dep = sorted(dep)
-        stack = [arr[0]]
         i = 1
         j = 0
-        ma = 0
+        ma = 1
+        res = 1
         while i<len(arr) and j<len(dep):
             if arr[i]<=dep[j]:
-                stack.append(arr[i])
-                ma = max(ma,len(stack))
+                ma+=1
                 i+=1
+                res = max(res,ma)
             else:
-                stack.pop()
+                ma-=1
                 j+=1
-        return ma
+        return res
